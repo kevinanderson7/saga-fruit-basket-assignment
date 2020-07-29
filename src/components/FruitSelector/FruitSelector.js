@@ -7,7 +7,7 @@ class FruitSelector extends Component {
   addFruit = (fruitName) => (event) => {
     this.props.dispatch({
       type: 'POST_FRUIT',
-      payload: fruitName,
+      payload: { fruit: fruitName },
     });
     //   axios({
     //     method: 'POST',
@@ -24,14 +24,6 @@ class FruitSelector extends Component {
     //       console.log(error);
     //       alert('Unable to save fruit');
     //     });
-  };
-
-  handleClick = (fruitClicked) => {
-    console.log('fruitClicked: ', fruitClicked);
-    this.props.dispatch({
-      type: 'POST_FRUIT',
-      payload: fruitClicked,
-    });
   };
 
   // getFruit() {
