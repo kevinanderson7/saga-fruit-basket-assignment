@@ -16,6 +16,7 @@ import Axios from 'axios';
 function* rootSaga() {
   yield takeEvery('GET_BASKET', getFruit);
   yield takeEvery('POST_FRUIT', postFruit);
+  yield takeEvery('DELETE_FRUIT', deleteFruit);
 }
 
 // Create sagaMiddleware
@@ -53,6 +54,17 @@ function* getFruit(action) {
       payload: response.data,
     });
     console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* deleteFruit(action) {
+  try {
+    const response = yield Axios.delete(`/fruit/${action.payload}`);
+    yield put({
+      type: 'GET_BASKET',
+    });
   } catch (error) {
     console.log(error);
   }
